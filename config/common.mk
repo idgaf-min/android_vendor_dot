@@ -140,3 +140,14 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Dot_props
 $(call inherit-product, vendor/dot/config/dot_props.mk)
+
+# Face Unlock
+TARGET_FACE_UNLOCK_SUPPORTED ?= true
+
+ifneq ($(TARGET_FACE_UNLOCK_SUPPORTED), false)
+PRODUCT_PACKAGES += \
+    FaceUnlockService
+endif
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.face.moto_unlock_service=$(TARGET_FACE_UNLOCK_SUPPORTED)
